@@ -48,6 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func loadExperiences() {
         if let data = UserDefaults.standard.data(forKey: "experiences"),
+//           decode raw data into array of struct
            let experiences = try? JSONDecoder().decode([Experience].self, from: data) {
             
             mapView.removeAnnotations(mapView.annotations)
@@ -80,7 +81,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @objc func showARView() {
-        // Navigate to the ARViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // Instantiate the ARViewController using its Storyboard ID
+        if let arVC = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
+            
+            // Use pushViewController to slide the AR screen into view (it stays inside the Navigation Bar)
+            self.navigationController?.pushViewController(arVC, animated: true)
+        }
     }
     
     @objc func handleMapTap(_ sender: UILongPressGestureRecognizer) {
@@ -88,6 +96,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if sender.state != .began {
             return
         }
+        print("Map was tapped! Coordinate calculation is next...") // <-- ADD THIS LINE
         
         // 1. Get the touch point on the screen (in points)
         let touchPoint = sender.location(in: mapView)

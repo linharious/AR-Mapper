@@ -96,7 +96,7 @@
         <!--View Controller-->
         <scene sceneID="8fa-h1-mM7">
             <objects>
-                <viewController id="9Va-hc-KLK" customClass="ARViewController" customModule="AR_Mapper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Va-hc-KLK" customClass="ARViewController" customModule="AR_Mapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZxJ-H3-q5J">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
