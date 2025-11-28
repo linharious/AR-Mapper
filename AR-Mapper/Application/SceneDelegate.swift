@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  AR-Mapper
-//
-//  Created by Tran Linh on 26/11/25.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

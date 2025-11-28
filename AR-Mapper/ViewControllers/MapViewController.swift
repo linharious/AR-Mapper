@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization() // Request location permission
+        locationManager.requestWhenInUseAuthorization() 
         mapView.showsUserLocation = true
         mapView.delegate = self
         
@@ -38,7 +38,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         loadExperiences()
     }
     
-    // ...
     
     @objc func addExperienceFromCenter() {
         let selectedLocation = mapView.centerCoordinate
@@ -71,7 +70,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if let createVC = storyboard.instantiateViewController(withIdentifier: "CreateExperienceViewController") as? CreateExperienceViewController {
             
-            // PASS THE DATA
             createVC.currentSelectedLocation = coordinate
             
             let navigationController = UINavigationController(rootViewController: createVC)
@@ -83,10 +81,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @objc func showARView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        // Instantiate the ARViewController using its Storyboard ID
         if let arVC = storyboard.instantiateViewController(withIdentifier: "ARViewController") as? ARViewController {
             
-            // Use pushViewController to slide the AR screen into view (it stays inside the Navigation Bar)
             self.navigationController?.pushViewController(arVC, animated: true)
         }
     }
@@ -96,7 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if sender.state != .began {
             return
         }
-        print("Map was tapped! Coordinate calculation is next...") // <-- ADD THIS LINE
+        print("Map was tapped! Coordinate calculation is next...")
         
         // 1. Get the touch point on the screen (in points)
         let touchPoint = sender.location(in: mapView)
